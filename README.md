@@ -34,7 +34,8 @@ pip install flask flask_sqlalchemy flask_bcrypt flask_jwt_extended pymysql flask
 
    class Config:
        SQLALCHEMY_DATABASE_URI = "mysql+pymysql://soham:soham123@localhost/irctc_db"
-       JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY", "your_jwt_secret_key")
+       JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY","24dd80b83e54bfabd5e777ef97bb79fd35a51965cae12cfaebbdfdc00a390f94" 
+")
        SQLALCHEMY_TRACK_MODIFICATIONS = False
    ```
 
@@ -65,7 +66,8 @@ curl -X POST "http://127.0.0.1:5000/auth/login" \
 ```
 Response:
 ```json
-{"access_token": "YOUR_JWT_TOKEN"}
+{"access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczOTM0MTQyMCwianRpIjoiYzYwYWYzYWQtOGQyMy00ZjkzLTg4NTgtMWMxZjBmMTc2YzE1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0dXNlciIsInJvbGUiOiJ1c2VyIn0sIm5iZiI6MTczOTM0MTQyMCwiY3NyZiI6IjMzNThlNjI3LWQ1MzMtNDYyMC04YTE2LTA5MzAwMjU3OWRlMCIsImV4cCI6MTczOTM0MjMyMH0.TKATc85pp5d66sYU7yP5fRQS8tXAj7ZYWPg7AeUniJA
+"}
 ```
 
 ---
@@ -74,7 +76,8 @@ Response:
 ```sh
 curl -X POST "http://127.0.0.1:5000/admin/trains" \
 -H "Content-Type: application/json" \
--H "Authorization: Bearer YOUR_JWT_TOKEN" \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczOTM0MTQyMCwianRpIjoiYzYwYWYzYWQtOGQyMy00ZjkzLTg4NTgtMWMxZjBmMTc2YzE1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0dXNlciIsInJvbGUiOiJ1c2VyIn0sIm5iZiI6MTczOTM0MTQyMCwiY3NyZiI6IjMzNThlNjI3LWQ1MzMtNDYyMC04YTE2LTA5MzAwMjU3OWRlMCIsImV4cCI6MTczOTM0MjMyMH0.TKATc85pp5d66sYU7yP5fRQS8tXAj7ZYWPg7AeUniJA
+" \
 -d '{"train_name": "Express 101", "source": "Mumbai", "destination": "Delhi", "total_seats": 100}'
 ```
 
@@ -83,7 +86,8 @@ curl -X POST "http://127.0.0.1:5000/admin/trains" \
 #### **Check Seat Availability**
 ```sh
 curl -X GET "http://127.0.0.1:5000/user/trains?source=Mumbai&destination=Delhi" \
--H "Authorization: Bearer YOUR_JWT_TOKEN"
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczOTM0MTQyMCwianRpIjoiYzYwYWYzYWQtOGQyMy00ZjkzLTg4NTgtMWMxZjBmMTc2YzE1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0dXNlciIsInJvbGUiOiJ1c2VyIn0sIm5iZiI6MTczOTM0MTQyMCwiY3NyZiI6IjMzNThlNjI3LWQ1MzMtNDYyMC04YTE2LTA5MzAwMjU3OWRlMCIsImV4cCI6MTczOTM0MjMyMH0.TKATc85pp5d66sYU7yP5fRQS8tXAj7ZYWPg7AeUniJA
+"
 ```
 
 #### **Book a Seat**
